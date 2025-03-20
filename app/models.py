@@ -56,3 +56,12 @@ class Order(Base):
     user = relationship("User")
     item = relationship("MenuItem")
     restaurant = relationship("Restaurant")
+
+class Table(Base):
+    __tablename__ = "tables"
+    id = Column(Integer, primary_key=True, index=True)
+    table_number = Column(Integer, nullable=False)
+    restaurant_id = Column(Integer, ForeignKey("restaurants.id"), nullable=False)
+    qr_code_url = Column(String, nullable=False)  # URL to the QR code image
+
+    restaurant = relationship("Restaurant")

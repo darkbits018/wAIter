@@ -41,12 +41,7 @@ def admin_required(authorization: str = Header(...), db: Session = Depends(get_d
         if not user or not user.is_admin:
             raise HTTPException(status_code=403, detail="Admin access required")
 
-        restaurant = db.query(Restaurant).filter(Restaurant.id == user.restaurant_id).first()
-        if not restaurant:
-            raise HTTPException(status_code=403, detail="Restaurant not found")
-
-        return user  # This user object now includes the `restaurant_id`
-
+        return user  # Returns the admin user object
     except Exception as e:
         raise HTTPException(status_code=401, detail="Invalid authentication")
 

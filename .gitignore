@@ -140,5 +140,4 @@ cython_debug/
 
 # VS Code
 .vscode/
-
-./waiter-firebase.json
+waiter-firebase.json

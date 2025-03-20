@@ -1,11 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, Header
 from sqlalchemy.orm import Session
-import firebase_admin
-from firebase_admin import auth, credentials
-import os
-
+from firebase_admin import auth
 from app.db import get_db
 from app.models import User, Restaurant
+import app.firebase  # Ensure Firebase is initialized
 from routes.admin import router
 
 
